@@ -1,0 +1,111 @@
+<!DOCTYPE>
+{% load static %}
+	<html>
+		<title>Attreg</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width initial-scale=1.0">
+		<link rel="stylesheet" href="{% static 'resources/css/bootstrap.min.css' %}" crossorigin="anonymous">
+		<link rel="stylesheet" href="{% static 'resources/css/font-awesome.min.css' %}" crossorigin="anonymous">
+		<style type="text/css">
+			#navbarDropdown:hover
+			{
+				color: white;
+				font: #0032CF;
+				transition-duration: 0.3s;
+			}
+				
+			.dropdown:hover>.dropdown-menu
+			{
+				display: block;
+				transition: 0.5s;
+			}
+			#nav_menus
+			{
+				float: left;
+			}
+			.row
+			{
+				width: 100%;
+				margin: 0px;
+			}
+
+			#nav_text
+			{
+				color: #a1b2cc;
+			}
+			#nav_text_active
+			{
+				color: white;
+			}
+			#nav_text:hover
+			{
+				color: white;
+			}
+		</style>
+	</head>
+	<body style="background-color: #f0f6ff;">
+		<div class="row">
+			<div class="col-sm-12" style="padding: 0px;">
+				<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+					<div class="row">
+						<div class="col-sm-4">
+							<a class="navbar-brand" href="#"><b style="color: white; padding-left: 15px; font-size: 20px;">Attreg<span style="font-size: 10px;">v1.0</span></b></a>
+		<!-- 					<img style="height: 40px; width: auto; padding-top: 5px;" src="{% static 'images/contiLogo.svg' %}">
+		 -->				
+							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="float: right;">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+						</div>			
+		<!-- 				<div class="col-sm-2" align="center">
+							<a class="navbar-brand" href="#"><b style="color: black; padding-left: 15px; font-size: 24px;">Computer Vision-LSM<span style="font-size: 10px;">v2.0</span></b></a>
+						</div>
+		 -->				<!-- This Division is to push nav menus to the extreme right  -->
+						<div class="col-sm-5">
+							<div class="collapse navbar-collapse" id="navbarNavDropdown">
+								<!-- This Division is to push nav menus to the extreme right  -->
+								<div class=" mr-auto"></div>
+
+								<ul class="navbar-nav" id="nav_menus" style="padding-right: 15px; margin-top: 10px;">
+									<li class="nav-item" id="nav_home" style="padding-right: 15px;">
+										<a class="nav-link" href="{% url 'index' %}"><h6 id="nav_text_active" style="font-size: 11px;">HOME</h6></a>
+									</li>
+									<li class="nav-item" id="nav_home" style="padding-right: 15px;">
+										<a class="nav-link" href="{% url 'logout' %}"><h6 id="nav_text" style="font-size: 11px;">Logout</h6></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</nav>	
+			</div>	
+		</div>
+
+		<div class="row" style="transform: translateY(80%);">
+			<div class="col-sm-4 card shadow p-1" style="border-radius: 15px;">
+				<h3 align="center" style="color: #0275d8;">Welcome Teacher</h3>
+				<table style="margin-top: 10px; margin-bottom: 10px;">
+					<tr>				
+						<td id="1"></td>
+					</tr>					
+					<tr>
+						<td id="2"></td>						
+					</tr>
+					<tr>
+						
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<script src="{% static 'resources/js/jquery-3.3.1.slim.min.js' %}" crossorigin="anonymous"></script>
+		<script src="{% static 'resources/js/popper.min.js' %}" crossorigin="anonymous"></script>
+		<script src="{% static 'resources/js/bootstrap.min.js' %}" crossorigin="anonymous"></script>	
+	</body>
+</html>
+
+<script type="text/javascript">
+	var msg = JSON.parse("{{ data | escapejs }}");
+	console.log(msg, "_self");
+	document.getElementById("1").innerHTML = msg['email'];
+	document.getElementById("2").innerHTML = msg['pwd'];
+</script>
